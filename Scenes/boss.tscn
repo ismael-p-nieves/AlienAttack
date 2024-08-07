@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://hsfcnnsej30o"]
+
+[ext_resource type="Texture2D" uid="uid://b1uukgo3r03ya" path="res://Assets/textures/boss-base.png" id="1_m10u0"]
+[ext_resource type="Script" path="res://Scenes/boss.gd" id="1_pxi4m"]
+[ext_resource type="Texture2D" uid="uid://bw4nxyf5ulpxd" path="res://Assets/textures/boss-eye.png" id="2_3b748"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_pwjhn"]
+radius = 192.0
+height = 740.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vjq0b"]
+radius = 135.015
+
+[node name="BossArea" type="Area2D"]
+collision_layer = 32
+collision_mask = 4
+script = ExtResource("1_pxi4m")
+health_points = 50
+
+[node name="CorneaSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+texture_repeat = 1
+position = Vector2(82.9998, -18)
+scale = Vector2(17.45, 17.45)
+texture = ExtResource("1_m10u0")
+
+[node name="IrisSprite" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(25, -6.99996)
+scale = Vector2(16.5, 17.875)
+texture = ExtResource("2_3b748")
+
+[node name="LaserContainer" type="Node" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(247, -8)
+shape = SubResource("CapsuleShape2D_pwjhn")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(27, -6)
+shape = SubResource("CircleShape2D_vjq0b")
+
+[node name="LaserTimer" type="Timer" parent="."]
+wait_time = 2.0
+autostart = true
+
+[connection signal="timeout" from="LaserTimer" to="." method="_on_laser_timer_timeout"]
