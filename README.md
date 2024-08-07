@@ -5,3 +5,7 @@ Bullet hell game where the player controls a rocket and shoots incoming enemies,
 Project based on the second section of GameDev.tv´s Godot tutorial.
 
 Navigate through the branches to see the implementation of each member of Atomic Ferry.
+
+## Ismael´s changes
+
+- Añadida pelea con un boss cuando llegas a los 1000 puntos
